@@ -1,2 +1,2 @@
 # MCA
-Printing some pattern using java codes.
+Java SE programs of MCA 4th Semister

@@ -1,5 +1,4 @@
 #include<stdio.h>
-
 struct student
 {
   char name[20];
@@ -37,7 +36,7 @@ int main()
 	printf("student mark1 :%d\n",s[i].mark1);	
 	printf("student mark2 :%d\n",s[i].mark2);	
 	printf("student total :%d \n",s[i].mark1+s[i].mark2);
-	printf("--------------------------------------------------------\n");
+	printf("-----------------------------------------------------\n");
 	}
 	return 0;
 }

@@ -1,0 +1,182 @@
+> use dbmca
+switched to db dbmca
+> db.semfour.find()
+{ "_id" : 1, "name" : "kiran", "age" : 21, "city" : "bangalore", "marks" : [ 55, 55, 55 ] }
+{ "_id" : 2, "name" : "chandra", "age" : 21, "city" : "bangalore2", "marks" : [ 55, 55, 55 ] }
+{ "_id" : 3, "name" : "abhi", "age" : 21, "city" : "bangalore3", "marks" : [ 100, 55, 55 ] }
+> db.semfour.insert({_id:4,name:"sagar",age:23,marks[70,56,85])
+... )
+2019-02-05T13:41:12.546+0530 E QUERY    [thread1] SyntaxError: missing : after property id @(shell):1:50
+> db.semfour.insert({_id:4,name:"sagar",age:23,marks[70,56,85]})
+2019-02-05T13:41:21.877+0530 E QUERY    [thread1] SyntaxError: missing : after property id @(shell):1:50
+> db.semfour.insert({_id:4,name:"sagar",age:23,marks:[70,56,85]})
+WriteResult({ "nInserted" : 1 })
+> db.semfour.find()
+{ "_id" : 1, "name" : "kiran", "age" : 21, "city" : "bangalore", "marks" : [ 55, 55, 55 ] }
+{ "_id" : 2, "name" : "chandra", "age" : 21, "city" : "bangalore2", "marks" : [ 55, 55, 55 ] }
+{ "_id" : 3, "name" : "abhi", "age" : 21, "city" : "bangalore3", "marks" : [ 100, 55, 55 ] }
+{ "_id" : 4, "name" : "sagar", "age" : 23, "marks" : [ 70, 56, 85 ] }
+
+
+> db.semfour.update({},{$addToSet:{marks:95}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.semfour.find()
+{ "_id" : 1, "name" : "kiran", "age" : 21, "city" : "bangalore", "marks" : [ 55, 55, 55, 95 ] }
+{ "_id" : 2, "name" : "chandra", "age" : 21, "city" : "bangalore2", "marks" : [ 55, 55, 55 ] }
+{ "_id" : 3, "name" : "abhi", "age" : 21, "city" : "bangalore3", "marks" : [ 100, 55, 55, 95 ] }
+{ "_id" : 4, "name" : "sagar", "age" : 23, "marks" : [ 70, 56, 85 ] }
+>
+
+> db.semfour.update({_id:3},{$addToSet:{marks:95}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.semfour.find()
+{ "_id" : 1, "name" : "kiran", "age" : 21, "city" : "bangalore", "marks" : [ 55, 55, 55 ] }
+{ "_id" : 2, "name" : "chandra", "age" : 21, "city" : "bangalore2", "marks" : [ 55, 55, 55 ] }
+{ "_id" : 3, "name" : "abhi", "age" : 21, "city" : "bangalore3", "marks" : [ 100, 55, 55, 95 ] }
+{ "_id" : 4, "name" : "sagar", "age" : 23, "marks" : [ 70, 56, 85 ] }
+>
+
+
+> db.semfour.update({_id:3},{$pop:{marks:-1}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.semfour.find()
+{ "_id" : 1, "name" : "kiran", "age" : 21, "city" : "bangalore", "marks" : [ 55, 55, 55, 95 ] }
+{ "_id" : 2, "name" : "chandra", "age" : 21, "city" : "bangalore2", "marks" : [ 55, 55, 55 ] }
+{ "_id" : 3, "name" : "abhi", "age" : 21, "city" : "bangalore3", "marks" : [ 55, 55, 95 ] }
+{ "_id" : 4, "name" : "sagar", "age" : 23, "marks" : [ 70, 56, 85 ] }
+>
+
+
+> db.semfour.update({_id:1},{$pop:{marks:1}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.semfour.find()
+{ "_id" : 1, "name" : "kiran", "age" : 21, "city" : "bangalore", "marks" : [ 55, 55, 55 ] }
+{ "_id" : 2, "name" : "chandra", "age" : 21, "city" : "bangalore2", "marks" : [ 55, 55, 55 ] }
+{ "_id" : 3, "name" : "abhi", "age" : 21, "city" : "bangalore3", "marks" : [ 55, 55, 95 ] }
+{ "_id" : 4, "name" : "sagar", "age" : 23, "marks" : [ 70, 56, 85 ] }
+>
+
+
+
+> db.semfour.update({_id:1},{$push:{marks:77}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.semfour.find()
+{ "_id" : 1, "name" : "kiran", "age" : 21, "city" : "bangalore", "marks" : [ 55, 55, 55, 77 ] }
+{ "_id" : 2, "name" : "chandra", "age" : 21, "city" : "bangalore2", "marks" : [ 55, 55, 55 ] }
+{ "_id" : 3, "name" : "abhi", "age" : 21, "city" : "bangalore3", "marks" : [ 55, 55, 95 ] }
+{ "_id" : 4, "name" : "sagar", "age" : 23, "marks" : [ 70, 56, 85 ] }
+> db.semfour.update({},{$push:{marks:77}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.semfour.find()
+{ "_id" : 1, "name" : "kiran", "age" : 21, "city" : "bangalore", "marks" : [ 55, 55, 55, 77, 77 ] }
+{ "_id" : 2, "name" : "chandra", "age" : 21, "city" : "bangalore2", "marks" : [ 55, 55, 55 ] }
+{ "_id" : 3, "name" : "abhi", "age" : 21, "city" : "bangalore3", "marks" : [ 55, 55, 95 ] }
+{ "_id" : 4, "name" : "sagar", "age" : 23, "marks" : [ 70, 56, 85 ] }
+>
+
+> db.semfour.update({},{$pull:{marks:{$lte:55}}} )
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.semfour.find()
+{ "_id" : 1, "name" : "kiran", "age" : 21, "city" : "bangalore", "marks" : [ 77, 77 ] }
+{ "_id" : 2, "name" : "chandra", "age" : 21, "city" : "bangalore2", "marks" : [ 55, 55, 55 ] }
+{ "_id" : 3, "name" : "abhi", "age" : 21, "city" : "bangalore3", "marks" : [ 55, 55, 95 ] }
+{ "_id" : 4, "name" : "sagar", "age" : 23, "marks" : [ 70, 56, 85 ] }
+>
+
+
+
+
+
+> db.semfour.update({},{$pullAll:{marks:[77,77]}} )
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.semfour.find()
+{ "_id" : 1, "name" : "kiran", "age" : 21, "city" : "bangalore", "marks" : [ ] }
+{ "_id" : 2, "name" : "chandra", "age" : 21, "city" : "bangalore2", "marks" : [ 55, 55, 55 ] }
+{ "_id" : 3, "name" : "abhi", "age" : 21, "city" : "bangalore3", "marks" : [ 55, 55, 95 ] }
+{ "_id" : 4, "name" : "sagar", "age" : 23, "marks" : [ 70, 56, 85 ] }
+{ "_id" : 5, "name" : "manav", "age" : 23, "marks" : [ 32, 65, 70, 56, 95, 85 ] }
+>
+
+
+
+> db.semfour.updateMany({},{$pullAll:{marks:[55,55]}} )
+{ "acknowledged" : true, "matchedCount" : 5, "modifiedCount" : 2 }
+> db.semfour.find()
+{ "_id" : 1, "name" : "kiran", "age" : 21, "city" : "bangalore", "marks" : [ ] }
+{ "_id" : 2, "name" : "chandra", "age" : 21, "city" : "bangalore2", "marks" : [ ] }
+{ "_id" : 3, "name" : "abhi", "age" : 21, "city" : "bangalore3", "marks" : [ 95 ] }
+{ "_id" : 4, "name" : "sagar", "age" : 23, "marks" : [ 70, 56, 85 ] }
+{ "_id" : 5, "name" : "manav", "age" : 23, "marks" : [ 32, 65, 70, 56, 95, 85 ] }
+>
+
+
+
+
+> db.semfour.update({_id:1},{$push:{marks:{$each:[75,55,68]}}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.semfour.find()
+{ "_id" : 1, "name" : "kiran", "age" : 21, "city" : "bangalore", "marks" : [ 75, 55, 68 ] }
+{ "_id" : 2, "name" : "chandra", "age" : 21, "city" : "bangalore2", "marks" : [ ] }
+{ "_id" : 3, "name" : "abhi", "age" : 21, "city" : "bangalore3", "marks" : [ 95 ] }
+{ "_id" : 4, "name" : "sagar", "age" : 23, "marks" : [ 70, 56, 85 ] }
+{ "_id" : 5, "name" : "manav", "age" : 23, "marks" : [ 32, 65, 70, 56, 95, 85 ] }
+>
+
+
+
+
+
+> db.semfour.update({_id:2},{$push:{marks:[75],marks:[85]}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.semfour.find()
+{ "_id" : 1, "name" : "kiran", "age" : 21, "city" : "bangalore", "marks" : [ 75, 55, 68 ] }
+{ "_id" : 2, "name" : "chandra", "age" : 21, "city" : "bangalore2", "marks" : [ [ 85 ] ] }
+{ "_id" : 3, "name" : "abhi", "age" : 21, "city" : "bangalore3", "marks" : [ 95 ] }
+{ "_id" : 4, "name" : "sagar", "age" : 23, "marks" : [ 70, 56, 85 ] }
+{ "_id" : 5, "name" : "manav", "age" : 23, "marks" : [ 32, 65, 70, 56, 95, 85 ] }
+> db.semfour.update({_id:2},{$push:{marks:[75],[85]}})
+2019-02-05T14:13:14.207+0530 E QUERY    [thread1] SyntaxError: missing : after property id @(shell):1:49
+> db.semfour.update({_id:2},{$push:{marks:[75,85]}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.semfour.find()
+{ "_id" : 1, "name" : "kiran", "age" : 21, "city" : "bangalore", "marks" : [ 75, 55, 68 ] }
+{ "_id" : 2, "name" : "chandra", "age" : 21, "city" : "bangalore2", "marks" : [ [ 85 ], [ 75, 85 ] ] }
+{ "_id" : 3, "name" : "abhi", "age" : 21, "city" : "bangalore3", "marks" : [ 95 ] }
+{ "_id" : 4, "name" : "sagar", "age" : 23, "marks" : [ 70, 56, 85 ] }
+{ "_id" : 5, "name" : "manav", "age" : 23, "marks" : [ 32, 65, 70, 56, 95, 85 ] }
+>
+
+
+
+> db.semfour.update({_id:1},{$push:{marks:{$each:[25,84,45],$position:2}}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.semfour.find()
+{ "_id" : 1, "name" : "kiran", "age" : 21, "city" : "bangalore", "marks" : [ 75, 55, 25, 84, 45, 68 ] }
+{ "_id" : 2, "name" : "chandra", "age" : 21, "city" : "bangalore2", "marks" : [ [ 85 ], [ 75, 85 ] ] }
+{ "_id" : 3, "name" : "abhi", "age" : 21, "city" : "bangalore3", "marks" : [ 95 ] }
+{ "_id" : 4, "name" : "sagar", "age" : 23, "marks" : [ 70, 56, 85 ] }
+{ "_id" : 5, "name" : "manav", "age" : 23, "marks" : [ 32, 65, 70, 56, 95, 85 ] }
+>
+
+
+
+> db.semfour.update({_id:1},{$push:{marks:{$each:[84,45],$slice:-1}}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.semfour.find()
+{ "_id" : 1, "name" : "kiran", "age" : 21, "city" : "bangalore", "marks" : [ 45 ] }
+{ "_id" : 2, "name" : "chandra", "age" : 21, "city" : "bangalore2", "marks" : [ [ 85 ], [ 75, 85 ] ] }
+{ "_id" : 3, "name" : "abhi", "age" : 21, "city" : "bangalore3", "marks" : [ 95 ] }
+{ "_id" : 4, "name" : "sagar", "age" : 23, "marks" : [ 70, 56, 85 ] }
+{ "_id" : 5, "name" : "manav", "age" : 23, "marks" : [ 32, 65, 70, 56, 95, 85 ] }
+
+
+
+> db.semfour.update({_id:4},{$push:{marks:{$each:[84,25,33],$sort:1}}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.semfour.find()
+{ "_id" : 1, "name" : "kiran", "age" : 21, "city" : "bangalore", "marks" : [ 45 ] }
+{ "_id" : 2, "name" : "chandra", "age" : 21, "city" : "bangalore2", "marks" : [ [ 85 ], [ 75, 85 ] ] }
+{ "_id" : 3, "name" : "abhi", "age" : 21, "city" : "bangalore3", "marks" : [ 95 ] }
+{ "_id" : 4, "name" : "sagar", "age" : 23, "marks" : [ 25, 33, 56, 70, 84, 85 ] }
+{ "_id" : 5, "name" : "manav", "age" : 23, "marks" : [ 95, 25, 84, 45, 74, 42 ] }
+>

@@ -1,0 +1,253 @@
+1)
+>db.createCollection("employee")
+{ "ok" : 1 }
+
+
+2)
+> db.employee.insert({_id:1,empcode:"emp001",emp_name:"kiran",doj:"2016-11-24T06:38:54.947Z",salary:45000})
+WriteResult({ "nInserted" : 1 })
+> db.employee.insert({_id:2,empcode:"emp002",emp_name:"raam",doj:"2018-09-20T06:38:54.947Z",salary:25000})
+WriteResult({ "nInserted" : 1 })
+
+> db.employee.insert([{_id:3,empcode:"emp003",emp_name:"ragav",doj:"2019-01-2T06:20:54.947Z",salary:15000},{_id:4,empcode:"emp004",emp_name:"saagar",doj:"2010-05-16T06:38:54.947Z",salary:55000},{_id:5,empcode:"emp005",emp_name:"swamy",doj:"2017-04-10T06:50:54.947Z",salary:22000}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 3,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.employee.find()
+{ "_id" : 1, "empcode" : "emp001", "emp_name" : "kiran", "doj" : "2016-11-24T06:38:54.947Z", "salary" : 45000 }
+{ "_id" : 2, "empcode" : "emp002", "emp_name" : "raam", "doj" : "2018-09-20T06:38:54.947Z", "salary" : 25000 }
+{ "_id" : 3, "empcode" : "emp003", "emp_name" : "ragav", "doj" : "2019-01-2T06:20:54.947Z", "salary" : 15000 }
+{ "_id" : 4, "empcode" : "emp004", "emp_name" : "saagar", "doj" : "2010-05-16T06:38:54.947Z", "salary" : 55000 }
+{ "_id" : 5, "empcode" : "emp005", "emp_name" : "swamy", "doj" : "2017-04-10T06:50:54.947Z", "salary" : 90000 }
+
+
+3)
+> db.employee.find({},{_id:1,empcode:1,emp_name:1})
+{ "_id" : 1, "empcode" : "emp001", "emp_name" : "kiran" }
+{ "_id" : 2, "empcode" : "emp002", "emp_name" : "raam" }
+{ "_id" : 3, "empcode" : "emp003", "emp_name" : "ragav" }
+{ "_id" : 4, "empcode" : "emp004", "emp_name" : "saagar" }
+{ "_id" : 5, "empcode" : "emp005", "emp_name" : "swamy" }
+
+
+
+4)
+> db.employee.insert({
+... _id:6,
+... empcode:"emp006",
+... emp_name:"abhi",
+... doj:"2016-11-24T06:38:54.947Z",
+... salary:35000,
+... deduction:
+... {pf:4500,pt:2550}})
+WriteResult({ "nInserted" : 1 })
+> db.employee.insert({
+... _id:7,
+... empcode:"emp007",
+... emp_name:"jeevan",
+... doj:"2016-11-24T06:38:54.947Z",
+... salary:45000,
+... deduction:
+... {pf:5500,pt:2750}})
+WriteResult({ "nInserted" : 1 })
+>
+> db.employee.insert({
+... _id:8,
+... empcode:"emp008",
+... emp_name:"chandra",
+... doj:"2016-11-24T06:38:54.947Z",
+... salary:25000,
+... deduction:
+... {pf:1500,pt:750}})
+WriteResult({ "nInserted" : 1 })
+>
+> db.employee.insert({
+... _id:9,
+... empcode:"emp009",
+... emp_name:"suryaa",
+... doj:"2011-11-24T06:38:54.947Z",
+... salary:55000,
+... deduction:
+... {pf:5500,pt:4500}})
+WriteResult({ "nInserted" : 1 })
+>
+> db.employee.insert({
+... _id:10,
+... empcode:"emp0010",
+... emp_name:"rahul",
+... doj:"2001-11-24T06:38:54.947Z",
+... salary:65000,
+... deduction:
+... {pf:6500,pt:5500}})
+WriteResult({ "nInserted" : 1 })
+>
+> db.employee.find()
+{ "_id" : 1, "empcode" : "emp001", "emp_name" : "kiran", "doj" : "2016-11-24T06:38:54.947Z", "salary" : 45000 }
+{ "_id" : 2, "empcode" : "emp002", "emp_name" : "raam", "doj" : "2018-09-20T06:38:54.947Z", "salary" : 25000 }
+{ "_id" : 3, "empcode" : "emp003", "emp_name" : "ragav", "doj" : "2019-01-2T06:20:54.947Z", "salary" : 15000 }
+{ "_id" : 4, "empcode" : "emp004", "emp_name" : "saagar", "doj" : "2010-05-16T06:38:54.947Z", "salary" : 55000 }
+{ "_id" : 5, "empcode" : "emp005", "emp_name" : "swamy", "doj" : "2017-04-10T06:50:54.947Z", "salary" : 22000 }
+{ "_id" : 6, "empcode" : "emp006", "emp_name" : "abhi", "doj" : "2016-11-24T06:38:54.947Z", "salary" : 35000, "deduction" : { "pf" : 4500, "pt" : 90000 } }
+{ "_id" : 7, "empcode" : "emp007", "emp_name" : "jeevan", "doj" : "2016-11-24T06:38:54.947Z", "salary" : 11000, "deduction" : { "pf" : 5500, "pt" : 2750 } }
+{ "_id" : 8, "empcode" : "emp008", "emp_name" : "chandra", "doj" : "2016-11-24T06:38:54.947Z", "salary" : 25000, "deduction" : { "pf" : 1500, "pt" : 750 } }
+{ "_id" : 9, "empcode" : "emp009", "emp_name" : "suryaa", "doj" : "2011-11-24T06:38:54.947Z", "salary" : 55000, "deduction" : { "pf" : 5500, "pt" : 4500 } }
+{ "_id" : 10, "empcode" : "emp0010", "emp_name" : "rahul", "doj" : "2001-11-24T06:38:54.947Z", "salary" : 65000, "deduction" : { "pf" : 6500, "pt" : 5500 } }
+>
+
+
+5)5. Display the _id and deduction detail of pf in the output document
+> db.employee.find({},{deduction:1})
+{ "_id" : 1 }
+{ "_id" : 2 }
+{ "_id" : 3 }
+{ "_id" : 4 }
+{ "_id" : 5 }
+{ "_id" : 6, "deduction" : { "pf" : 4500, "pt" : 2550 } }
+{ "_id" : 7, "deduction" : { "pf" : 5500, "pt" : 2750 } }
+{ "_id" : 8, "deduction" : { "pf" : 1500, "pt" : 750 } }
+{ "_id" : 9, "deduction" : { "pf" : 5500, "pt" : 4500 } }
+{ "_id" : 10, "deduction" : { "pf" : 6500, "pt" : 5500 } }
+>
+
+
+6)DOJ
+> db.employee.find({},{doj:1})
+{ "_id" : 1, "doj" : "2016-11-24T06:38:54.947Z" }
+{ "_id" : 2, "doj" : "2018-09-20T06:38:54.947Z" }
+{ "_id" : 3, "doj" : "2019-01-2T06:20:54.947Z" }
+{ "_id" : 4, "doj" : "2010-05-16T06:38:54.947Z" }
+{ "_id" : 5, "doj" : "2017-04-10T06:50:54.947Z" }
+{ "_id" : 6, "doj" : "2016-11-24T06:38:54.947Z" }
+{ "_id" : 7, "doj" : "2016-11-24T06:38:54.947Z" }
+{ "_id" : 8, "doj" : "2016-11-24T06:38:54.947Z" }
+{ "_id" : 9, "doj" : "2011-11-24T06:38:54.947Z" }
+{ "_id" : 10, "doj" : "2001-11-24T06:38:54.947Z" }
+
+7)Display the documents that have the salary equal to 90000
+> db.employee.find({salary:{$eq:90000}})
+{ "_id" : 6, "empcode" : "emp006", "emp_name" : "abhi", "doj" : "2016-11-24T06:38:54.947Z", "salary" : 90000, "deduction" : { "pf" : 4500, "pt" : 2550 } }
+
+
+8)Select the documents where the salary is greater than 9000 and less than or equal to 12000.
+> db.employee.find({salary:{$gt:9000},salary:{$lte:12000}})
+{ "_id" : 7, "empcode" : "emp007", "emp_name" : "jeevan", "doj" : "2016-11-24T06:38:54.947Z", "salary" : 10000, "deduction" : { "pf" : 4500, "pt" : 2550 } }
+
+
+9)
+9. Add another collection called dependents consisting of emp_id, dep_id, no. of dependents,age of dependents.
+
+db.createCollection("dependants")
+{ "ok" : 1 }
+
+db.dependants.insert({_id:1,dep_id:101,no_of_dep:2,age_of_dependants:[55,63]})
+WriteResult({ "nInserted" : 1 })
+
+db.dependants.insert({_id:2,dep_id:102,no_of_dep:4,age_of_dependants:[55,63,20,30]})
+WriteResult({ "nInserted" : 1 })
+
+db.dependants.insert({_id:3,dep_id:103,no_of_dep:1,age_of_dependants:[55]})
+WriteResult({ "nInserted" : 1 })
+
+db.dependants.insert({_id:4,dep_id:104,no_of_dep:3,age_of_dependants:[55,63,40]})
+WriteResult({ "nInserted" : 1 })
+
+db.dependants.insert({_id:5,dep_id:105,no_of_dep:2,age_of_dependants:[55,63]})
+WriteResult({ "nInserted" : 1 })
+
+db.dependants.insert({_id:6,dep_id:106,no_of_dep:2,age_of_dependants:[55,63]})
+WriteResult({ "nInserted" : 1 })
+
+db.dependants.insert({_id:7,dep_id:107,no_of_dep:4,age_of_dependants:[55,63,15,14]})
+WriteResult({ "nInserted" : 1 })
+
+db.dependants.insert({_id:8,dep_id:108,no_of_dep:2,age_of_dependants:[55,63]})
+WriteResult({ "nInserted" : 1 })
+
+db.dependants.insert({_id:9,dep_id:109,no_of_dep:3,age_of_dependants:[55,63,27]})
+WriteResult({ "nInserted" : 1 })
+
+db.dependants.insert({_id:10,dep_id:110,no_of_dep:1,age_of_dependants:[55]})
+WriteResult({ "nInserted" : 1 })
+
+
+10. If the age of dependents is more than 60 years create a new collection called insurance consisting of insurance_id, emp_id, insurance_date, insurance_type and amount of premium.
+
+db.dependants.find({age_of_dependants:{$gt:60}})
+{ "_id" : 1, "dep_id" : 101, "no_of_dep" : 2, "age_of_dependants" : [ 55, 63 ] }
+{ "_id" : 2, "dep_id" : 102, "no_of_dep" : 4, "age_of_dependants" : [ 55, 63, 20, 30 ] }
+{ "_id" : 4, "dep_id" : 104, "no_of_dep" : 3, "age_of_dependants" : [ 55, 63, 40 ] }
+{ "_id" : 5, "dep_id" : 105, "no_of_dep" : 2, "age_of_dependants" : [ 55, 63 ] }
+{ "_id" : 6, "dep_id" : 106, "no_of_dep" : 2, "age_of_dependants" : [ 55, 63 ] }
+{ "_id" : 7, "dep_id" : 107, "no_of_dep" : 4, "age_of_dependants" : [ 55, 63, 15, 14 ] }
+{ "_id" : 8, "dep_id" : 108, "no_of_dep" : 2, "age_of_dependants" : [ 55, 63 ] }
+{ "_id" : 9, "dep_id" : 109, "no_of_dep" : 3, "age_of_dependants" : [ 55, 63, 27 ] }
+
+db.dependants.find()
+
+db.createCollection("insurance")
+{ "ok" : 1 }
+
+db.insurance.insert({insurance_id:151,_id:1,insurance_date:"12-02-2018",insurance_type:"life",amount_of_premium:1500})
+WriteResult({ "nInserted" : 1 })
+
+db.insurance.insert({insurance_id:152,_id:2,insurance_date:"14-05-2017",insurance_type:"life",amount_of_premium:1500})
+WriteResult({ "nInserted" : 1 })
+
+db.insurance.insert({insurance_id:153,_id:3,insurance_date:"12-02-2016",insurance_type:"life",amount_of_premium:1500})
+WriteResult({ "nInserted" : 1 })
+
+db.insurance.insert({insurance_id:154,_id:4,insurance_date:"22-07-2015",insurance_type:"life",amount_of_premium:1500})
+WriteResult({ "nInserted" : 1 })
+
+db.insurance.insert({insurance_id:155,_id:5,insurance_date:"21-10-2016",insurance_type:"life",amount_of_premium:1500})
+WriteResult({ "nInserted" : 1 })
+
+db.insurance.insert({insurance_id:156,_id:6,insurance_date:"10-11-2017",insurance_type:"life",amount_of_premium:1500})
+WriteResult({ "nInserted" : 1 })
+
+db.insurance.insert({insurance_id:157,_id:7,insurance_date:"11-12-2018",insurance_type:"life",amount_of_premium:1500})
+WriteResult({ "nInserted" : 1 })
+
+db.insurance.insert({insurance_id:158,_id:8,insurance_date:"09-11-2018",insurance_type:"life",amount_of_premium:1500})
+WriteResult({ "nInserted" : 1 })
+
+db.insurance.insert({insurance_id:159,_id:9,insurance_date:"01-06-2017",insurance_type:"life",amount_of_premium:1500})
+WriteResult({ "nInserted" : 1 })
+
+db.insurance.insert({insurance_id:160,_id:10,insurance_date:"04-03-2015",insurance_type:"life",amount_of_premium:1500})
+WriteResult({ "nInserted" : 1 })
+
+db.insurance.find()
+{ "_id" : 1, "insurance_id" : 151, "insurance_date" : "12-02-2018", "insurance_type" : "life", "amount_of_premium" : 1500 }
+{ "_id" : 2, "insurance_id" : 152, "insurance_date" : "14-05-2017", "insurance_type" : "life", "amount_of_premium" : 1500 }
+{ "_id" : 3, "insurance_id" : 153, "insurance_date" : "12-02-2016", "insurance_type" : "life", "amount_of_premium" : 1500 }
+{ "_id" : 4, "insurance_id" : 154, "insurance_date" : "22-07-2015", "insurance_type" : "life", "amount_of_premium" : 1500 }
+{ "_id" : 5, "insurance_id" : 155, "insurance_date" : "21-10-2016", "insurance_type" : "life", "amount_of_premium" : 1500 }
+{ "_id" : 6, "insurance_id" : 156, "insurance_date" : "10-11-2017", "insurance_type" : "life", "amount_of_premium" : 1500 }
+{ "_id" : 7, "insurance_id" : 157, "insurance_date" : "11-12-2018", "insurance_type" : "life", "amount_of_premium" : 1500 }
+{ "_id" : 8, "insurance_id" : 158, "insurance_date" : "09-11-2018", "insurance_type" : "life", "amount_of_premium" : 1500 }
+{ "_id" : 9, "insurance_id" : 159, "insurance_date" : "01-06-2017", "insurance_type" : "life", "amount_of_premium" : 1500 }
+
+
+11. If the age of dependents is less than 25, add another collection called education consisting of emp_id, children_id, education_institute, fees.
+
+db.dependants.find({age_of_dependants:{$lt:25}})
+{ "_id" : 2, "dep_id" : 102, "no_of_dep" : 4, "age_of_dependants" : [ 55, 63, 20, 30 ] }
+{ "_id" : 7, "dep_id" : 107, "no_of_dep" : 4, "age_of_dependants" : [ 55, 63, 15, 14 ] }
+
+db.createCollection("education")
+{ "ok" : 1 }
+
+db.education.insert({children_id:111,_id:2,education_institute:"SSVM",fees:50000})
+WriteResult({ "nInserted" : 1 })
+
+db.education.insert({children_id:112,_id:7,education_institute:"NPS",fees:100000})
+WriteResult({ "nInserted" : 1 })
+

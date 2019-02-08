@@ -8,13 +8,10 @@ class Ascii
 		int i,j,count=0;
 		int a[][]=new int[50][50];
 		count=text.length();	
-		char ch;
 		int col=0,row=0,maxcol=0,maxrow=0;
 		for(i=0;i<count;i++)
 		{  
-			ch=text.charAt(i);
-
-			if(Character.isSpace(ch))
+		 	if(Character.isSpace(text.charAt(i)))
 			{
 				row++;
 				col=0;

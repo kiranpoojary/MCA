@@ -28,7 +28,7 @@ class Matrix
 		}
 
 		 System.out.println();	
-		 System.out.println("Changed row");
+		 System.out.println("Changed column");
 		for(i=n-1;i>=0;i--)
 		{
 			for(j=0;j<m;j++)

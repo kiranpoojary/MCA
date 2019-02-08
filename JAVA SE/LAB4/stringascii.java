@@ -5,7 +5,7 @@ class Ascii
 	public static void main(String[] args)
 	{
 		String text="my name is not agentx"; 
-		int i,j,count=0,num;
+		int i,j,count=0;
 		int a[][]=new int[50][50];
 		count=text.length();	
 		char ch;
@@ -20,8 +20,7 @@ class Ascii
 				col=0;
 				continue;
 			}
-           num=text.charAt(i);
-           a[row][col]=num;
+           a[row][col]=text.charAt(i);
            col++;
            if(maxcol<col)
 				{

@@ -39,7 +39,7 @@ class Loan extends Bank
 	public void showLoanInfo()
 	{
 		System.out.println("Loan type   :"+loantype);
-		System.out.println("Loan Accounr   :"+laccno);
+		System.out.println("Loan Account No.   :"+laccno);
 
 	}
 

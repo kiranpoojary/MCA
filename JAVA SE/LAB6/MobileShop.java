@@ -40,9 +40,9 @@ class SamsungS10 extends Samsung
 	{
 		System.out.println("Screen Size              :5.5 Inch");
 		System.out.println("Camere primary/front     :16MP/8Mp");
-		System.out.println("RAM and ROM 			 :4Gb/64Gb");
+		System.out.println("RAM and ROM 	     :4Gb/64Gb");
 		System.out.println("Battery Capacity         :4200MaH");
-		System.out.println("Price           	     :Rs.14,999 Inch");
+		System.out.println("Price           	     :Rs.14,999");
 	}
 
 }
@@ -53,9 +53,9 @@ class Micromaxinfinity12 extends Micromax
 	{
 		System.out.println("Screen Size              :5.0 Inch");
 		System.out.println("Camere primary/front     :12MP/5Mp");
-		System.out.println("RAM and ROM 			 :3Gb/32Gb");
+		System.out.println("RAM and ROM 	     :3Gb/32Gb");
 		System.out.println("Battery Capacity         :3500MaH");
-		System.out.println("Price           	     :Rs.11,999 Inch");
+		System.out.println("Price           	     :Rs.11,999");
 
 	}
 
